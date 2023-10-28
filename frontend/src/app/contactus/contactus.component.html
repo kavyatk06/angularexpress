@@ -1,0 +1,49 @@
+<p>Contacts Manager!</p>
+ <b>Enter Contact's Details</b><br />
+ <form #contactData="ngForm" (ngSubmit)="selectedContact.contactid ? updateContact() : addContact(contactData)">
+   <br><label>{{this.expresponse}}</label><br><br>
+   First Name <input type="text" name="firstName" [(ngModel)]="selectedContact.firstName" /><br />
+   Last Name <input type="text" name="lastName" [(ngModel)]="selectedContact.lastName" /><br />
+   Email Id <input type="text" name="emailid" [(ngModel)]="selectedContact.emailid" /><br />
+   Address <input type="text" name="Address" [(ngModel)]="selectedContact.Address" /><br />
+   Phone Number <input type="text" name="phoneNo" [(ngModel)]="selectedContact.phoneNo" /><br />
+   
+   <input type="submit" [value]="selectedContact.contactid? 'Update Contact' : 'Add Contact'" />
+   <input type="button" value="Get All Contacts" (click)="getAllContacts()"/>
+ </form>
+ 
+ 
+<b>Contact Details</b>
+<table border="4px">
+  <thead>
+    <tr>
+      <th>ContactID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Address</th>
+    
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contactList">
+      <td>{{ contact.contactid }}</td>
+      <td>{{ contact.firstName }}</td>
+      <td>{{ contact.lastName }}</td>
+      <td>{{ contact.phoneNo }}</td>
+      <td>{{ contact.emailid }}</td>
+      <td>{{ contact.Address }}</td>
+      
+      <td>
+        <button (click)="deleteContact(contact.contactid)">Delete</button>
+        <button (click)="prepareUpdate(contact)">Update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ 
+<router-outlet></router-outlet>
+ 
+ 

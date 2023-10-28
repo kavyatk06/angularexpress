@@ -1,0 +1,12 @@
+<section>
+  <article>
+<p>Login Page!</p>
+<b>Enter your login details</b><br/>
+<form #loginData="ngForm" (ngSubmit)="loginUser(loginData)">
+ <br><label>{{this.loginResponse}}</label><br><br>
+ <label>User Id</label>  <input type="text" name="userid" ngModel required /><br />
+ <label>Password</label> <input type="password" name="password" ngModel required /><br />
+  <input type="submit" value="Login"/>
+</form>
+</article>
+</section>

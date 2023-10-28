@@ -1,0 +1,36 @@
+
+<!--Any template driven must use NgForm attribute (directive)-->
+<!--The corresponding model is automatically created by angular-->
+<!--userData is the object that acts as model which angular have to create automatically.It will
+have fields like firstName,lastName,joinDate and Salary
+<form #userData="ngForm" var userData =new NgForm (NgForm is the class from that object is stored *ref pipes)-->
+<img src="../assets/homeimg.png" width="40px" height="40px"/>
+ 
+  <form #userData="ngForm" (ngSubmit)="addUser(userData)">
+ 
+    UserID <input type="text" name="uid" ngModel /><br>
+    Password <input type="password" name="password" ngModel /><br>
+    EmailId  <input type="email" name="email" ngModel /><br>
+    <input type="submit" value="Add User"/> &nbsp;&nbsp;
+    <input type="button" value="Get User" (click) ="getAllUsers()" />
+   
+ 
+  </form>
+  <br><b>{{this.expresponse}}</b><br><br>
+ 
+  <table style="border-style: dashed; ">
+    <tr>
+      <th>userId</th>
+      <th>Password</th>
+      <th>EmialId</th>
+     
+    </tr>
+    <tr *ngFor="let user of userList">
+      <td>{{this.user.userid}}</td>
+      <td>{{this.user.password}}</td>
+      <td>{{this.user.emailid}}</td>
+     
+    </tr>
+  </table>
+  <a routerLink="/aboutus" >aboutus </a>&nbsp;&nbsp;
+  <a routerLink="/contactus" >contactus</a>&nbsp;&nbsp;
